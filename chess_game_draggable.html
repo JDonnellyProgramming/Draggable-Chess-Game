@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chess Board</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.min.js"></script>
+    <style>
+        body {
+            width: 100%;
+            overflow: hidden;
+        }
+        .box {
+            width: 80px;
+            height: 80px;
+            border: 1px solid black;
+            display: inline-block;
+            margin: -2px;
+            vertical-align: top;
+        }
+        .black {
+            background-color: gray;
+        }
+        .chessboard {
+            margin-left: 600px;
+            margin-top: 40px;
+        }
+        .white-chess-pieces {
+            font-size: 70px;
+            display: flex;
+            flex-direction: row;
+            margin-left: 380px;
+            cursor: pointer;
+        }
+        .black-chess-pieces {
+            font-size: 70px;
+            display: flex;
+            flex-direction: row;
+            margin-left: 380px;
+            cursor: pointer;
+        }
+
+
+        .draggable {
+            z-index: 1000;
+        }
+        .clock {
+            position: absolute;
+            margin-left: 1500px;
+            margin-top: -400px;
+            background-color: silver;
+            width: 300px;
+            height: 200px;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            border-radius: 20px;
+        }
+        .clock button {
+            color: blue;
+            background: green;
+            border: none;
+            outline: none;
+            display: inline-block;
+            width: 80px;
+            height: 50px;
+            margin-top: 120px;
+            border-radius: 10px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        .clock button:hover {
+            opacity: 0.8;
+            border: 1px solid gold;
+            transition: 0.5s;
+            cursor: pointer;
+        }
+        .clock button:active {
+            transform: scale(0.9);
+            color: green;
+            background: blue;
+        }
+        .stopwatch {
+            position: absolute;
+            margin-top: 40px;
+            margin-left: 50px;
+            font-size: 40px;
+            font-weight: bold;
+            background: black;
+            color: white;
+            width: 200px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="white-chess-pieces">
+    <div class="white-king draggable">&#9812;</div>
+    <div class="white-queen draggable">&#9813;</div>
+    <div class="white-castle draggable">&#9814;</div>
+    <div class="white-castle draggable">&#9814;</div>
+    <div class="white-bishop draggable">&#9815;</div>
+    <div class="white-bishop draggable">&#9815;</div>
+    <div class="white-knight draggable">&#9816;</div>
+    <div class="white-knight draggable">&#9816;</div>
+    <div class="white-pawn draggable">&#9817;</div>
+    <div class="white-pawn draggable">&#9817;</div>
+    <div class="white-pawn draggable">&#9817;</div>
+    <div class="white-pawn draggable">&#9817;</div>
+    <div class="white-pawn draggable">&#9817;</div>
+    <div class="white-pawn draggable">&#9817;</div>
+    <div class="white-pawn draggable">&#9817;</div>
+    <div class="white-pawn draggable">&#9817;</div>
+    </div>
+   
+    <div class="chessboard">
+    <div>
+        <div class="box"></div>
+        <div class="box black"></div>
+        <div class="box"></div>
+        <div class="box black"></div>
+        <div class="box"></div>
+        <div class="box black"></div>
+        <div class="box"></div>
+        <div class="box black"></div>
+    </div>
+    <div>
+        <div class="box black"></div>
+        <div class="box"></div>
+        <div class="box black"></div>
+        <div class="box"></div>
+        <div class="box black"></div>
+        <div class="box"></div>
+        <div class="box black"></div>
+        <div class="box"></div>
+    </div>
+    <div>
+        <div class="box"></div>
+        <div class="box black"></div>
+        <div class="box"></div>
+        <div class="box black"></div>
+        <div class="box"></div>
+        <div class="box black"></div>
+        <div class="box"></div>
+        <div class="box black"></div>
+    </div>
+    <div>
+        <div class="box black"></div>
+        <div class="box"></div>
+        <div class="box black"></div>
+        <div class="box"></div>
+        <div class="box black"></div>
+        <div class="box"></div>
+        <div class="box black"></div>
+        <div class="box"></div>
+    </div>
+    <div>
+        <div class="box"></div>
+        <div class="box black"></div>
+        <div class="box"></div>
+        <div class="box black"></div>
+        <div class="box"></div>
+        <div class="box black"></div>
+        <div class="box"></div>
+        <div class="box black"></div>
+    </div>
+    <div>
+        <div class="box black"></div>
+        <div class="box"></div>
+        <div class="box black"></div>
+        <div class="box"></div>
+        <div class="box black"></div>
+        <div class="box"></div>
+        <div class="box black"></div>
+        <div class="box"></div>
+    </div>
+    <div>
+        <div class="box"></div>
+        <div class="box black"></div>
+        <div class="box"></div>
+        <div class="box black"></div>
+        <div class="box"></div>
+        <div class="box black"></div>
+        <div class="box"></div>
+        <div class="box black"></div>
+    </div>
+    <div>
+        <div class="box black"></div>
+        <div class="box"></div>
+        <div class="box black"></div>
+        <div class="box"></div>
+        <div class="box black"></div>
+        <div class="box"></div>
+        <div class="box black"></div>
+        <div class="box"></div>
+    </div>
+    </div>
+    <div class="black-chess-pieces">
+        <div class="black-king draggable">&#9818;</div>
+        <div class="black-queen draggable">&#9819;</div>
+        <div class="black-castle draggable">&#9820;</div>
+        <div class="black-castle draggable">&#9820;</div>
+        <div class="black-bishop draggable">&#9821;</div>
+        <div class="black-bishop draggable">&#9821;</div>
+        <div class="black-knight draggable">&#9822;</div>
+        <div class="black-knight draggable">&#9822;</div>
+        <div class="black-pawn draggable">&#9823;</div>
+        <div class="black-pawn draggable">&#9823;</div>
+        <div class="black-pawn draggable">&#9823;</div>
+        <div class="black-pawn draggable">&#9823;</div>
+        <div class="black-pawn draggable">&#9823;</div>
+        <div class="black-pawn draggable">&#9823;</div>
+        <div class="black-pawn draggable">&#9823;</div>
+        <div class="black-pawn draggable">&#9823;</div>
+        </div>
+        <div class="clock">
+        <div class="stopwatch">00:00:00.00</div>
+        <button id="start">Start</button>
+        <button class="pause">Pause</button>
+        <button class="reset">Reset</button>
+        </div>
+    <script>
+        $(document).ready(function() {
+            $(".draggable").draggable();
+        });
+
+
+        let startTime;
+        let elapsedTime = 0;
+        let timerInterval;
+
+
+        const stopwatch = document.getElementById("stopwatch");
+        const startButton = document.getElementById("start");
+        const pauseButton = document.getElementById("pause");
+        const resetButton = document.getElementById("reset");
+
+
+        function startTimer() {
+            startTime = Date.now() - elapsedTime;
+            timerInterval = setInterval(updateTimer, 1);
+            startButton.disabled = true;
+            pauseButton.disabled = false;
+            resetButton.disabled = true;
+        }
+        function pauseTimer() {
+            clearInterval(timerInterval);
+            startButton.disabled = false;
+            pauseButton.disabled = true;
+            resetButtun.disabled = false;
+        }
+        function resetTimer() {
+           clearInterval(timerInterval);
+           elapsedTime = 0;
+           updateTimer();
+           startButton.disabled = false;
+           pauseButton.disabled = true;
+           resetButton.disabled = true;
+        }
+        function updateTimer() {
+  const elapsedTimeInMilliseconds = Date.now() - startTime;
+  const hours = Math.floor(elapsedTimeInMilliseconds / 3600000);
+  const minutes = Math.floor((elapsedTimeInMilliseconds - hours * 3600000) / 60000);
+  const seconds = Math.floor((elapsedTimeInMilliseconds - hours * 3600000 - minutes * 60000) / 1000);
+  const milliseconds = elapsedTimeInMilliseconds % 1000;
+  elapsedTime = elapsedTimeInMilliseconds;
+  stopwatch.textContent = `${padNumber(hours)}:${padNumber(minutes)}:${padNumber(seconds)}.${padNumber(milliseconds, 3)}`;
+}
+
+
+function padNumber(number, length = 2) {
+  return number.toString().padStart(length, "0");
+}
+
+
+startButton.addEventListener("click", startTimer);
+pauseButton.addEventListener("click", pauseTimer);
+resetButton.addEventListener("click", resetTimer);
+    </script>
+</body>
+</html>
